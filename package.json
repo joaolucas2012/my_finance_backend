@@ -1,0 +1,27 @@
+{
+  "name": "my_finance_backend",
+  "version": "1.0.0",
+  "description": "This is a simple backend project to manage finances.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaolucas2012/my_finance_backend.git"
+  },
+  "keywords": [
+    "finances"
+  ],
+  "author": "joaolucas2012",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaolucas2012/my_finance_backend/issues"
+  },
+  "homepage": "https://github.com/joaolucas2012/my_finance_backend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.8"
+  }
+}
