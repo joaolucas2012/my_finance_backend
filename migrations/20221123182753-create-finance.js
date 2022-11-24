@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Finances", {
+    await queryInterface.createTable("Finance", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -16,9 +16,9 @@ module.exports = {
           notEmpty: { msg: "Campo de data não pode ser vazio" },
         },
       },
-      category_id: {
-        allowNull: false,
+      categoryId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         validate: {
           notEmpty: { msg: "Campo de categoria não pode ser vazio" },
         },
@@ -54,6 +54,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Finances");
+    await queryInterface.dropTable("Finance");
   },
 };

@@ -1,12 +1,12 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Finances extends Model {
+  class Finance extends Model {
     static associate(models) {
-      this.belongsTo(models.Category, { foreignKey: "category_id" });
+      this.belongsTo(models.Category, { foreignKey: "categoryId" });
     }
   }
-  Finances.init(
+  Finance.init(
     {
       date: DataTypes.DATEONLY,
       category_id: DataTypes.INTEGER,
@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Finances",
+      modelName: "Finance",
     }
   );
-  return Finances;
+  return Finance;
 };
