@@ -4,6 +4,7 @@
   "description": "This is a simple backend project to manage finances.",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
