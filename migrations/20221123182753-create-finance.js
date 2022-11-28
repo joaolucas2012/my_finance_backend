@@ -23,7 +23,7 @@ module.exports = {
           notEmpty: { msg: "Campo de categoria não pode ser vazio" },
         },
         references: {
-          model: "Category",
+          model: "Categories",
           key: "id",
         },
         onUpdate: "cascade",

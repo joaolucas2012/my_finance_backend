@@ -1,6 +1,6 @@
 const sequelize = require("sequelize");
 const model = require("../models");
-const category = model.category;
+const category = model.Category;
 
 module.exports = {
   // Create a new category
@@ -10,7 +10,7 @@ module.exports = {
       const Category = await category.create({
         description,
       });
-      return res.json({ msg: "Category created successfully" });
+      return res.json({ msg: "Category created successfully!" });
     } catch (error) {
       return res.json({ msg: `Error while creating category: ${error}` });
     }
@@ -27,7 +27,7 @@ module.exports = {
         },
         { where: { id } }
       );
-      return res.json({ msg: "Category updated successfully" });
+      return res.json({ msg: "Category updated successfully!" });
     } catch (error) {
       return res.json({ msg: `Error while updating category: ${error}` });
     }
