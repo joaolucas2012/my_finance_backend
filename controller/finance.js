@@ -25,7 +25,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const { date, categoryId, title, value } = req.body;
-      const Finance = await finance.update(
+      await finance.update(
         {
           date,
           categoryId,
@@ -60,12 +60,12 @@ module.exports = {
     }
   },
 
-  // List the finances by its category id
+  // List the finances by their category id
   async findByCategoryId(req, res) {
     try {
       const { id } = req.params;
-      let balance = 0;
-      let sum = 0;
+      var balance = 0;
+      var sum = 0;
       const Finance = await finance.findAll({
         where: {
           categoryId: parseInt(id),
@@ -79,7 +79,7 @@ module.exports = {
         return res.json({ balance });
       } else {
         for (sum of Finance) {
-          balance += sum.valor;
+          balance = balance + sum.value;
         }
         return res.json({ balance });
       }
