@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   Finance.init(
     {
       date: DataTypes.DATEONLY,
-      category_id: DataTypes.INTEGER,
+      categoryId: DataTypes.INTEGER,
       title: DataTypes.STRING,
       value: DataTypes.DOUBLE,
     },

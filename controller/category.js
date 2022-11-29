@@ -49,4 +49,19 @@ module.exports = {
       return res.json({ msg: `Error while listing categories: ${error}` });
     }
   },
+
+  // Delete a category by id
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+      const Category = await category.destroy({
+        where: {
+          id: id,
+        },
+      });
+      return res.json({ msg: `Category deleted successfully!` });
+    } catch (error) {
+      return res.json({ msg: `Error while deleting category: ${error}` });
+    }
+  },
 };
