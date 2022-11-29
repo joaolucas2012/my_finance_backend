@@ -7,7 +7,7 @@ module.exports = {
   async create(req, res) {
     try {
       const { description } = req.body;
-      const Category = await category.create({
+      await category.create({
         description,
       });
       return res.json({ msg: "Category created successfully!" });
@@ -21,7 +21,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const { description } = req.body;
-      const Category = await category.update(
+      await category.update(
         {
           description,
         },
@@ -54,7 +54,7 @@ module.exports = {
   async delete(req, res) {
     try {
       const { id } = req.params;
-      const Category = await category.destroy({
+      await category.destroy({
         where: {
           id: id,
         },

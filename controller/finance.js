@@ -8,7 +8,7 @@ module.exports = {
   async create(req, res) {
     try {
       const { date, categoryId, title, value } = req.body;
-      const Finance = await finance.create({
+      await finance.create({
         date,
         categoryId,
         title,
@@ -114,7 +114,7 @@ module.exports = {
   async delete(req, res) {
     try {
       const { id } = req.params;
-      const Finance = await finance.destroy({
+      await finance.destroy({
         where: {
           id: id,
         },
