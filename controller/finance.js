@@ -60,6 +60,34 @@ module.exports = {
     }
   },
 
+  // List the finances by its category id
+  async findByCategoryId(req, res) {
+    try {
+      const { id } = req.params;
+      let balance = 0;
+      let sum = 0;
+      const Finance = await finance.findAll({
+        where: {
+          categoryId: parseInt(id),
+        },
+        include: {
+          all: true,
+        },
+      });
+
+      if (Finance.length === 0) {
+        return res.json({ balance });
+      } else {
+        for (sum of Finance) {
+          balance += sum.valor;
+        }
+        return res.json({ balance });
+      }
+    } catch (error) {
+      return res.json({ msg: `Error while listing: ${error}` });
+    }
+  },
+
   // Filter finances by a specific date
   async filterByDate(req, res) {
     try {

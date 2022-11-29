@@ -12,10 +12,8 @@ router.delete("/delete/category/:id", category.delete); // Route to delete a cat
 /* Finances routes */
 router.post("/create/finance", finance.create); // Route to create a new finance
 router.get("/list/finance/:page", finance.findAll); // Route to list all finances
-router.get(
-  "/list/finance/initialDate/:initialDate/finalDate/:finalDate/page/:page",
-  finance.filterByDate
-); // Route to list finances filtered by date
+router.get("/list/finance/:categoryId", finance.findByCategoryId); // Route to list finances filtered by category
+router.get("/list/finance/:initialDate/:finalDate/:page", finance.filterByDate); // Route to list finances filtered by date
 router.put("/update/finance/:id", finance.update); // Route to update all finances
 router.delete("/delete/finance/:id", finance.delete); // Route to delete finance by id
 
