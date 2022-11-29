@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/joaolucas2012/my_finance_backend#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.8"
