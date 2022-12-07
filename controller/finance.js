@@ -70,9 +70,6 @@ module.exports = {
         where: {
           categoryId: parseInt(id),
         },
-        include: {
-          all: true,
-        },
       });
 
       if (Finance.length === 0) {
@@ -81,7 +78,7 @@ module.exports = {
         for (sum of Finance) {
           balance = balance + sum.value;
         }
-        return res.json({ balance });
+        return res.json({ Finance, balance });
       }
     } catch (error) {
       return res.json({ msg: `Error while listing: ${error}` });
@@ -102,6 +99,9 @@ module.exports = {
             [Op.gte]: initialDate,
             [Op.lte]: finalDate,
           },
+        },
+        include: {
+          all: true,
         },
       });
       return res.json({ Finance });
