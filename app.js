@@ -8,6 +8,4 @@ app.use(express.json());
 app.use(cors());
 app.use(router);
 
-app.listen(8080, function (req, res) {
-  console.log("Servidor is running on port 8080");
-});
+app.listen(8080, () => console.log("Server is running on port 8080"));

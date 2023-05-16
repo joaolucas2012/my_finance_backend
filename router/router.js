@@ -5,7 +5,7 @@ const finance = require("../controller/finance");
 
 /* Category routes */
 router.post("/create/category", category.create); // Route to create a new category
-router.get("/list/category/:page", category.findAll); // Route to list all categories
+router.get("/list/category", category.findAll); // Route to list all categories
 router.put("/update/category/:id", category.update); // Route to update all categories
 router.delete("/delete/category/:id", category.delete); // Route to delete a category by id
 

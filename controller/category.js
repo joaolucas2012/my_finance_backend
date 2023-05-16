@@ -36,13 +36,8 @@ module.exports = {
   // List all categories
   async findAll(req, res) {
     try {
-      const { page } = req.params;
-      const limit = 5;
-
       const Category = await category.findAndCountAll({
         order: [["id", "ASC"]],
-        limit: limit,
-        offset: parseInt(page),
       });
       return res.json({ Category });
     } catch (error) {

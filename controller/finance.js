@@ -44,7 +44,7 @@ module.exports = {
   async findAll(req, res) {
     try {
       const { page } = req.params;
-      const limit = 5;
+      const limit = 6;
 
       const Finance = await finance.findAndCountAll({
         order: [["date", "ASC"]],
@@ -64,8 +64,16 @@ module.exports = {
   async findByCategoryId(req, res) {
     try {
       const { id } = req.params;
+
       var balance = 0;
       var sum = 0;
+
+      const Category = await Category.findOne({
+        where: { id: id },
+      });
+
+      console.log(Category);
+
       const Finance = await finance.findAll({
         where: {
           categoryId: parseInt(id),
