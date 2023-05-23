@@ -4,7 +4,7 @@
   "description": "This is a simple backend project to manage finances.",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +25,8 @@
     "express": "^4.18.2",
     "mysql2": "^2.3.3",
     "sequelize": "^6.25.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
