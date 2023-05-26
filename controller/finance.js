@@ -48,7 +48,7 @@ module.exports = {
       const limit = 6;
 
       const Finance = await finance.findAndCountAll({
-        order: [["date", "ASC"]],
+        order: [["date", "DESC"]],
         include: {
           all: true,
         },
