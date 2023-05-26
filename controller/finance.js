@@ -2,6 +2,7 @@ const sequelize = require("sequelize");
 const Op = sequelize.Op;
 const model = require("../models");
 const finance = model.Finance;
+const Category = model.Category;
 
 module.exports = {
   // Create a new finance
@@ -47,7 +48,7 @@ module.exports = {
       const limit = 6;
 
       const Finance = await finance.findAndCountAll({
-        order: [["date", "ASC"]],
+        order: [["date", "DESC"]],
         include: {
           all: true,
         },
@@ -68,25 +69,28 @@ module.exports = {
       var balance = 0;
       var sum = 0;
 
-      const Category = await Category.findOne({
+      const category = await Category.findOne({
         where: { id: id },
       });
 
-      console.log(Category);
+      console.log(category);
 
       const Finance = await finance.findAll({
         where: {
           categoryId: parseInt(id),
         },
+        include: {
+          all: true,
+        },
       });
 
       if (Finance.length === 0) {
-        return res.json({ balance });
+        return res.json({ category, balance });
       } else {
         for (sum of Finance) {
           balance = balance + sum.value;
         }
-        return res.json({ Finance, balance });
+        return res.json({ category, balance });
       }
     } catch (error) {
       return res.json({ msg: `Error while listing: ${error}` });
@@ -96,20 +100,17 @@ module.exports = {
   // Filter finances by a specific date
   async filterByDate(req, res) {
     try {
-      const { page, initialDate, finalDate } = req.params;
-      const limit = 5;
+      const { initialDate, finalDate } = req.params;
 
       const Finance = await finance.findAndCountAll({
-        limit: limit,
-        offset: parseInt(page),
+        include: {
+          all: true,
+        },
         where: {
           date: {
             [Op.gte]: initialDate,
             [Op.lte]: finalDate,
           },
-        },
-        include: {
-          all: true,
         },
       });
       return res.json({ Finance });
