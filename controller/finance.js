@@ -5,7 +5,7 @@ const finance = model.Finance;
 const Category = model.Category;
 
 module.exports = {
-  // Create a new finance
+  /** Creates a finance. */
   async create(req, res) {
     try {
       const { date, categoryId, title, value } = req.body;
@@ -21,7 +21,7 @@ module.exports = {
     }
   },
 
-  // Update a specific finance by id
+  /**  Updates a specific finance by id. */
   async update(req, res) {
     try {
       const { id } = req.params;
@@ -41,19 +41,14 @@ module.exports = {
     }
   },
 
-  // List all finances
+  /** Lists all finances. */
   async findAll(req, res) {
     try {
-      const { page } = req.params;
-      const limit = 6;
-
       const Finance = await finance.findAndCountAll({
         order: [["date", "DESC"]],
         include: {
           all: true,
         },
-        limit: limit,
-        offset: parseInt(page),
       });
       return res.json({ Finance });
     } catch (error) {
@@ -61,7 +56,7 @@ module.exports = {
     }
   },
 
-  // List the finances by their category id
+  /** Lists the finances by their category id. */
   async findByCategoryId(req, res) {
     try {
       const { id } = req.params;
@@ -97,12 +92,13 @@ module.exports = {
     }
   },
 
-  // Filter finances by a specific date
+  /**  Filters finances by a specific date. */
   async filterByDate(req, res) {
     try {
       const { initialDate, finalDate } = req.params;
 
       const Finance = await finance.findAndCountAll({
+        order: [["date", "DESC"]],
         include: {
           all: true,
         },
@@ -119,7 +115,7 @@ module.exports = {
     }
   },
 
-  // Delete a specific finance by id
+  /**  Deletes a specific finance by id. */
   async delete(req, res) {
     try {
       const { id } = req.params;
